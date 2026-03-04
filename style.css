@@ -1,0 +1,210 @@
+@font-face {
+  font-family: 'PPSupply';
+  src: url('../font/PPSupplyMono-Regular') format('opentype');
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg:   #080808;
+  --text: #f0eeea;
+  --dim:  #444;
+
+  --c0: #F4A8B4;
+  --c1: #C8B4E8;
+  --c2: #F0E888;
+  --c3: #A8D4F0;
+  --c4: #90DCC0;
+  --c5: #D0AADC;
+}
+
+html { scroll-behavior: auto; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'PPSupply', monospace;
+  cursor: default;
+}
+
+/* ──────────────────────────────────────
+   PAGE & STICKY FRAME
+────────────────────────────────────── */
+.page {
+  height: 1200vh;
+  position: relative;
+}
+
+.frame {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* ──────────────────────────────────────
+   NAME
+────────────────────────────────────── */
+.name {
+  position: absolute;
+  top: 2.6rem;
+  left: 3.5rem;
+  font-size: 18pt;
+  font-family: 'PPSupply', monospace;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  z-index: 10;
+  line-height: 1;
+}
+
+/* ──────────────────────────────────────
+   MAIN TEXT
+────────────────────────────────────── */
+.ptext {
+  position: absolute;
+  bottom: 5rem;
+  left: 3.5rem;
+  right: 50%;
+  font-size: 25pt;
+  font-family: 'PPSupply', monospace;
+  color: var(--text);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.kw {
+  display: inline;
+  color: var(--text);
+}
+
+.kw.on {
+  color: var(--text);
+}
+
+/* ──────────────────────────────────────
+   VIDEO BOXES
+────────────────────────────────────── */
+.video-stage {
+  position: absolute;
+  inset: 0;
+  z-index: 15;
+  pointer-events: none;
+}
+
+.vbox {
+  position: absolute;
+  width: 14vw;
+  background: #111;
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(0.94);
+  transition:
+    opacity .6s cubic-bezier(.22, 1, .36, 1),
+    transform .7s cubic-bezier(.22, 1, .36, 1);
+  pointer-events: auto;
+  z-index: 20;
+  aspect-ratio: 9 / 16;
+  border-radius: 6px;
+}
+
+.vbox.on {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.vbox video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* placeholder when no src */
+.vbox-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #111;
+  color: var(--dim);
+  font-size: 10pt;
+  font-family: 'PPSupply', monospace;
+  letter-spacing: 0.12em;
+}
+
+/* ──────────────────────────────────────
+   SCROLL HINT
+────────────────────────────────────── */
+#hint {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'PPSupply', monospace;
+  font-size: 8pt;
+  letter-spacing: 0.3em;
+  color: var(--dim);
+  pointer-events: none;
+  transition: opacity 1s ease;
+  animation: flicker 3s ease-in-out infinite;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: .15; }
+  50%       { opacity: .55; }
+}
+
+/* ──────────────────────────────────────
+   COUNTER
+────────────────────────────────────── */
+#counter {
+  position: fixed;
+  bottom: 2rem;
+  left: 3.5rem;
+  font-family: 'PPSupply', monospace;
+  font-size: 8pt;
+  letter-spacing: 0.15em;
+  color: var(--dim);
+  opacity: 0;
+  transition: opacity .4s;
+}
+
+#counter.show { opacity: 1; }
+
+/* ──────────────────────────────────────
+   SOUND BUTTON
+────────────────────────────────────── */
+#soundBtn {
+  position: fixed;
+  bottom: 2rem;
+  right: 3.5rem;
+  font-family: 'PPSupply', monospace;
+  font-size: 8pt;
+  letter-spacing: 0.2em;
+  color: var(--dim);
+  background: none;
+  border: 1px solid var(--dim);
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  z-index: 999;
+  transition: color .3s, border-color .3s;
+}
+
+#soundBtn:hover {
+  color: var(--text);
+  border-color: var(--text);
+}
+
+#soundBtn.on {
+  color: var(--text);
+  border-color: var(--text);
+}
