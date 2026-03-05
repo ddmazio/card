@@ -61,7 +61,20 @@ function applySound() {
   boxes.forEach(el => {
     const vid = el.querySelector('video');
     if (!vid) return;
-    vid.muted = !(soundOn && vid === latestVid);
+
+    if (!el.classList.contains('on')) {
+      /* hidden — mute completely */
+      vid.muted  = true;
+      vid.volume = 0;
+    } else if (vid === latestVid) {
+      /* newest visible — full volume */
+      vid.muted  = !soundOn;
+      vid.volume = soundOn ? 1 : 0;
+    } else {
+      /* older visible — low background volume */
+      vid.muted  = !soundOn;
+      vid.volume = soundOn ? 0.15 : 0;
+    }
   });
 }
 
@@ -95,11 +108,26 @@ function update(raw) {
 
     el.classList.toggle('on', show);
     if (vid) {
-      show ? vid.play().catch(() => {}) : vid.pause();
+      if (show) {
+        vid.play().catch(() => {
+          /* retry once after a short delay in case element wasn't ready */
+          setTimeout(() => vid.play().catch(() => {}), 300);
+        });
+      } else {
+        vid.pause();
+      }
     }
   });
 
   applySound();
+
+  /* safety pass — resume any visible video that stalled */
+  boxes.forEach(el => {
+    const vid = el.querySelector('video');
+    if (vid && el.classList.contains('on') && vid.paused) {
+      vid.play().catch(() => {});
+    }
+  });
 
   /* counter — show progress through full cycle */
   const cEl = document.getElementById('counter');
