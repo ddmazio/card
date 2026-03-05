@@ -55,7 +55,7 @@ body {
   position: absolute;
   top: 2.6rem;
   left: 3.5rem;
-  font-size: 35pt;
+  font-size: 18pt;
   font-family: 'PPSupply', monospace;
   color: var(--text);
   letter-spacing: -0.01em;
@@ -65,13 +65,14 @@ body {
 
 /* ──────────────────────────────────────
    MAIN TEXT
+   Base = 30pt (Macbook 14")
 ────────────────────────────────────── */
 .ptext {
   position: absolute;
   bottom: 5rem;
   left: 3.5rem;
   right: 50%;
-  font-size: 45pt;
+  font-size: 30pt;
   font-family: 'PPSupply', monospace;
   color: var(--text);
   line-height: 1.08;
@@ -127,7 +128,6 @@ body {
   display: block;
 }
 
-/* placeholder when no src */
 .vbox-placeholder {
   width: 100%;
   height: 100%;
@@ -199,161 +199,61 @@ body {
   transition: color .3s, border-color .3s;
 }
 
-#soundBtn:hover {
-  color: var(--text);
-  border-color: var(--text);
-}
-
-#soundBtn.on {
-  color: var(--text);
-  border-color: var(--text);
-}
+#soundBtn:hover { color: var(--text); border-color: var(--text); }
+#soundBtn.on    { color: var(--text); border-color: var(--text); }
 
 /* ──────────────────────────────────────
-   RESPONSIVE
+   RESPONSIVE — DESKTOP & PROJEÇÃO
+   Base: 30pt @ Macbook 14" (~1512px)
 ────────────────────────────────────── */
 
-/* Laptop pequeno — até 1280px */
-@media (max-width: 1280px) {
-  .name {
-    font-size: 14pt;
-    top: 2rem;
-    left: 2.5rem;
-  }
-
-  .ptext {
-    font-size: 18pt;
-    left: 2.5rem;
-    right: 48%;
-    bottom: 4rem;
-    line-height: 1.1;
-  }
-
-  .vbox {
-    width: 12vw;
-  }
-
-  #counter, #soundBtn {
-    font-size: 7pt;
-    bottom: 1.5rem;
-  }
-
-  #counter { left: 2.5rem; }
-  #soundBtn { right: 2.5rem; }
-
-  #hint {
-    font-size: 7pt;
-    bottom: 1.5rem;
-  }
-}
-
-/* Laptop / Desktop médio — 1280px a 1600px */
-@media (min-width: 1280px) and (max-width: 1600px) {
-  .name {
-    font-size: 16pt;
-  }
-
-  .ptext {
-    font-size: 22pt;
-    right: 50%;
-  }
-
-  .vbox {
-    width: 13vw;
-  }
-}
-
-/* Desktop grande — 1600px a 1920px */
+/* Desktop médio — 1600px a 1920px */
 @media (min-width: 1600px) and (max-width: 1920px) {
-  .name {
-    font-size: 20pt;
-  }
-
-  .ptext {
-    font-size: 28pt;
-    right: 52%;
-  }
-
-  .vbox {
-    width: 13vw;
-  }
+  .name  { font-size: 20pt; }
+  .ptext { font-size: 34pt; right: 51%; }
+  .vbox  { width: 13vw; }
 }
 
-/* Projeção / ecrãs grandes — acima de 1920px */
-@media (min-width: 1920px) {
-  .name {
-    font-size: 24pt;
-    top: 3rem;
-    left: 5vw;
-  }
-
-  .ptext {
-    font-size: 32pt;
-    left: 5vw;
-    right: 52%;
-    bottom: 6rem;
-    line-height: 1.1;
-  }
-
-  .vbox {
-    width: 11vw;
-  }
-
-  #counter {
-    left: 5vw;
-    font-size: 9pt;
-  }
-
-  #soundBtn {
-    right: 5vw;
-    font-size: 9pt;
-  }
-
-  #hint {
-    font-size: 9pt;
-  }
+/* Desktop grande / projeção — 1920px a 2560px */
+@media (min-width: 1920px) and (max-width: 2560px) {
+  .name  { font-size: 22pt; top: 3rem; left: 5vw; }
+  .ptext { font-size: 38pt; left: 5vw; right: 52%; bottom: 6rem; }
+  .vbox  { width: 12vw; }
+  #counter { left: 5vw; font-size: 9pt; }
+  #soundBtn { right: 5vw; font-size: 9pt; }
+  #hint { font-size: 9pt; }
 }
 
 /* Ultra-wide / projeção panorâmica — acima de 2560px */
 @media (min-width: 2560px) {
-  .name {
-    font-size: 28pt;
-  }
-
-  .ptext {
-    font-size: 36pt;
-    right: 55%;
-  }
-
-  .vbox {
-    width: 9vw;
-  }
+  .name  { font-size: 26pt; left: 5vw; }
+  .ptext { font-size: 44pt; left: 5vw; right: 54%; }
+  .vbox  { width: 10vw; }
 }
 
 /* ──────────────────────────────────────
-   TABLET & MOBILE
+   RESPONSIVE — LAPTOP PEQUENO
+────────────────────────────────────── */
+
+/* Laptop pequeno — 1024px a 1280px */
+@media (max-width: 1280px) {
+  .name  { font-size: 14pt; top: 2rem; left: 2.5rem; }
+  .ptext { font-size: 26pt; left: 2.5rem; right: 48%; bottom: 4rem; line-height: 1.1; }
+  .vbox  { width: 13vw; }
+  #counter { left: 2.5rem; bottom: 1.5rem; font-size: 7pt; }
+  #soundBtn { right: 2.5rem; bottom: 1.5rem; font-size: 7pt; }
+  #hint { font-size: 7pt; bottom: 1.5rem; }
+}
+
+/* ──────────────────────────────────────
+   RESPONSIVE — TABLET & MOBILE
 ────────────────────────────────────── */
 
 /* Tablet landscape — até 1024px */
 @media (max-width: 1024px) {
-  .name {
-    font-size: 13pt;
-    top: 1.8rem;
-    left: 2rem;
-  }
-
-  .ptext {
-    font-size: 16pt;
-    left: 2rem;
-    right: 44%;
-    bottom: 3.5rem;
-    line-height: 1.12;
-  }
-
-  .vbox {
-    width: 16vw;
-  }
-
+  .name  { font-size: 13pt; top: 1.8rem; left: 2rem; }
+  .ptext { font-size: 22pt; left: 2rem; right: 42%; bottom: 3.5rem; line-height: 1.12; }
+  .vbox  { width: 18vw; }
   #counter { left: 2rem; bottom: 1.4rem; }
   #soundBtn { right: 2rem; bottom: 1.4rem; }
   #hint { bottom: 1.4rem; }
@@ -361,24 +261,9 @@ body {
 
 /* Tablet portrait — até 768px */
 @media (max-width: 768px) {
-  .name {
-    font-size: 12pt;
-    top: 1.6rem;
-    left: 1.5rem;
-  }
-
-  .ptext {
-    font-size: 13pt;
-    left: 1.5rem;
-    right: 2%;
-    bottom: 3rem;
-    line-height: 1.15;
-  }
-
-  .vbox {
-    width: 22vw;
-  }
-
+  .name  { font-size: 12pt; top: 1.6rem; left: 1.5rem; }
+  .ptext { font-size: 18pt; left: 1.5rem; right: 2%; bottom: 3rem; line-height: 1.15; }
+  .vbox  { width: 24vw; }
   #counter { left: 1.5rem; bottom: 1.2rem; font-size: 7pt; }
   #soundBtn { right: 1.5rem; bottom: 1.2rem; font-size: 7pt; }
   #hint { font-size: 7pt; bottom: 1.2rem; }
@@ -386,24 +271,9 @@ body {
 
 /* Mobile grande — até 480px */
 @media (max-width: 480px) {
-  .name {
-    font-size: 11pt;
-    top: 1.2rem;
-    left: 1.2rem;
-  }
-
-  .ptext {
-    font-size: 11pt;
-    left: 1.2rem;
-    right: 1.2rem;
-    bottom: 2.5rem;
-    line-height: 1.2;
-  }
-
-  .vbox {
-    width: 36vw;
-  }
-
+  .name  { font-size: 11pt; top: 1.2rem; left: 1.2rem; }
+  .ptext { font-size: 14pt; left: 1.2rem; right: 1.2rem; bottom: 2.5rem; line-height: 1.2; }
+  .vbox  { width: 38vw; }
   #counter { left: 1.2rem; bottom: 1rem; font-size: 6pt; }
   #soundBtn { right: 1.2rem; bottom: 1rem; font-size: 6pt; padding: 0.3rem 0.6rem; }
   #hint { font-size: 6pt; bottom: 1rem; }
@@ -411,24 +281,9 @@ body {
 
 /* Mobile pequeno — até 360px */
 @media (max-width: 360px) {
-  .name {
-    font-size: 10pt;
-    top: 1rem;
-    left: 1rem;
-  }
-
-  .ptext {
-    font-size: 10pt;
-    left: 1rem;
-    right: 1rem;
-    bottom: 2rem;
-    line-height: 1.22;
-  }
-
-  .vbox {
-    width: 42vw;
-  }
-
+  .name  { font-size: 10pt; top: 1rem; left: 1rem; }
+  .ptext { font-size: 12pt; left: 1rem; right: 1rem; bottom: 2rem; line-height: 1.22; }
+  .vbox  { width: 44vw; }
   #counter { left: 1rem; bottom: 0.8rem; }
   #soundBtn { right: 1rem; bottom: 0.8rem; }
   #hint { bottom: 0.8rem; }
