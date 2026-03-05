@@ -41,7 +41,7 @@ const soundBtn = document.getElementById('soundBtn');
 
 soundBtn.addEventListener('click', () => {
   soundOn = !soundOn;
-  soundBtn.textContent = soundOn ? 'SOM ON' : 'SOM OFF';
+  soundBtn.textContent = soundOn ? 'SOUND ON' : 'SOUND OFF';
   soundBtn.classList.toggle('on', soundOn);
   applySound();
 });
