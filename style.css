@@ -23,13 +23,14 @@
   --c5: #D0AADC;
 }
 
-html { scroll-behavior: auto; }
+html { scroll-behavior: auto; overscroll-behavior: none; }
 
 body {
   background: var(--bg);
   color: var(--text);
   font-family: 'PPSupply', monospace;
   cursor: default;
+  overscroll-behavior: none;
 }
 
 /* ──────────────────────────────────────
